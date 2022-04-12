@@ -1,0 +1,46 @@
+[begin] (Main Menu)
+[encoding] {UTF-8}
+[exec] (Terminal Emulator) {~/.fluxbox/bin/fluxterm.sh}
+[exec] (Web Browser) {firefox}
+[exec] (File Manager) {thunar}
+[exec] (Text Editor) {geany}
+[separator]
+[submenu] (Apps As Root)
+	[exec] (Alacritty) {~/.fluxbox/bin/asroot.sh alacritty}
+	[exec] (Thunar) {~/.fluxbox/bin/asroot.sh 'dbus-run-session thunar'}
+	[exec] (Geany) {~/.fluxbox/bin/asroot.sh geany}
+	[separator]
+	[exec] (Ranger) {~/.fluxbox/bin/asroot.sh 'alacritty -e ranger'}
+	[exec] (Vim) {~/.fluxbox/bin/asroot.sh 'alacritty -e vim'}
+[end]
+[submenu] (Screenshot)
+	[exec] (Screenshot Now) {takeshot --now}
+	[exec] (Screenshot In 5s) {takeshot --in5}
+	[exec] (Screenshot In 10s) {takeshot --in10}
+	[exec] (Screenshot Area) {takeshot --area}
+	[exec] (Screenshot Window) {takeshot --win}
+[end]
+[separator]
+[submenu] (Fluxbox)
+	[config] (Configure)
+	[submenu] (Styles) {Choose a style...}
+		[stylesdir] (~/.fluxbox/styles)
+	[end]
+	[submenu] (Backgrounds)
+	[wallpapers] (~/.fluxbox/backgrounds) {hsetroot -cover}
+	[end]
+	[workspaces] (Workspaces)
+	[separator]
+	[reconfig] (Reload Configs)
+	[restart] (Restart Fluxbox)
+	[exit] (Exit Fluxbox)
+[end]
+[submenu] (System)
+	[exec] (Lock) {betterlockscreen --lock}
+	[exec] (Logout) {~/.fluxbox/bin/fluxpower.sh --logout}
+	[exec] (Suspend) {~/.fluxbox/bin/fluxpower.sh --suspend}
+	[exec] (Reboot) {~/.fluxbox/bin/fluxpower.sh --reboot}
+	[exec] (Shutdown) {~/.fluxbox/bin/fluxpower.sh --shutdown}
+[end]
+[endencoding]
+[end]

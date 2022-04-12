@@ -1,0 +1,20 @@
+post_install() {
+	local _user=`echo ${SUDO_USER:-$(whoami)}`
+	local _gid=`echo ${SUDO_GID}`
+	local _group=`cat /etc/group | grep ${_gid} | cut -d: -f1 | head -1`
+	local _dir="/home/${_user}"
+	
+	if [[ ! -d "${_dir}/.fluxbox" ]]; then
+		echo -e "\n[*] Copying fluxbox config files into ${_dir}..."
+		mkdir -p ${_dir}/.fluxbox
+		cp -rf /etc/skel/.fluxbox/* ${_dir}/.fluxbox/
+		chown -R ${_user}:${_group} ${_dir}/.fluxbox
+		if [[ -d "${_dir}/.fluxbox" ]]; then
+			echo -e "[*] Done!\n"
+		else
+			echo -e "[*] Failed!\n"
+		fi
+	else
+		echo -e "\n[*] Configurations for fluxbox already exist in your config dir.\n Please copy the config files manually from '/etc/skel/.fluxbox' before you login into fluxbox.\n"
+	fi
+}

@@ -1,0 +1,182 @@
+## Mouse ----------------------------
+
+# click on the desktop to get menus
+OnDesktop Mouse1 :HideMenus
+OnDesktop Mouse2 :WorkspaceMenu
+OnDesktop Mouse3 :RootMenu
+
+# scroll on the desktop to change workspaces
+OnDesktop Mouse4 :PrevWorkspace
+OnDesktop Mouse5 :NextWorkspace
+
+# scroll on the toolbar to change current window
+OnToolbar Mouse4 :PrevWindow {static groups} (iconhidden=no)
+OnToolbar Mouse5 :NextWindow {static groups} (iconhidden=no)
+
+# super + left/right click to move/resize a window
+OnWindow Mod4 Mouse1 :MacroCmd {Raise} {Focus} {StartMoving}
+OnWindowBorder Move1 :StartMoving
+
+OnWindow Mod4 Mouse3 :MacroCmd {Raise} {Focus} {StartResizing NearestCorner}
+OnLeftGrip Move1 :StartResizing bottomleft
+OnRightGrip Move1 :StartResizing bottomright
+
+# alt + middle click to lower the window
+OnWindow Mod1 Mouse2 :Lower
+
+# control-click a window's titlebar and drag to attach windows
+OnTitlebar Control Mouse1 :StartTabbing
+
+# double click on the titlebar to maximize
+OnTitlebar Double Mouse1 :maximize
+
+# scroll on the titlebar to shade
+OnTitlebar Mouse4 :shadeon
+OnTitlebar Mouse5 :shadeoff
+
+# left click on the titlebar to move the window
+OnTitlebar Mouse1 :MacroCmd {Raise} {Focus} {ActivateTab}
+OnTitlebar Move1  :StartMoving
+
+# middle click on the titlebar to lower
+OnTitlebar Mouse2 :Lower
+
+# right click on the titlebar for a menu of options
+OnTitlebar Mouse3 :WindowMenu
+
+## Keys ----------------------------
+
+## Workspaces ##
+
+# change to a specific workspace
+Mod4 1 :Workspace 1
+Mod4 2 :Workspace 2
+Mod4 3 :Workspace 3
+Mod4 4 :Workspace 4
+Mod4 5 :Workspace 5
+
+# send the current window to a specific workspace
+Shift Mod4 1 :SendToWorkspace 1
+Shift Mod4 2 :SendToWorkspace 2
+Shift Mod4 3 :SendToWorkspace 3
+Shift Mod4 4 :SendToWorkspace 4
+Shift Mod4 5 :SendToWorkspace 5
+
+# send the current window and change to a specific workspace
+Control Mod4 1 :TakeToWorkspace 1
+Control Mod4 2 :TakeToWorkspace 2
+Control Mod4 3 :TakeToWorkspace 3
+Control Mod4 4 :TakeToWorkspace 4
+Control Mod4 5 :TakeToWorkspace 5
+
+# send the current window and follow it to previous/next workspace
+Shift Mod4 Left :TakeToPrevWorkspace
+Shift Mod4 Right :TakeToNextWorkspace
+
+## System Keys ##
+XF86MonBrightnessUp :exec {brightness --inc}
+XF86MonBrightnessDown :exec {brightness --dec}
+
+XF86AudioRaiseVolume :exec {volume --inc}
+XF86AudioLowerVolume :exec {volume --dec}
+XF86AudioMute :exec {volume --toggle}
+
+XF86AudioStop :exec {mpc stop}
+XF86AudioPlay :exec {mpc toggle}
+XF86AudioPrev :exec {mpc prev}
+XF86AudioNext :exec {mpc next}
+
+Print :exec {takeshot --now}
+Mod1 Print :exec {takeshot --in5}
+Shift Print :exec {takeshot --in10}
+Control Print :exec {takeshot --win}
+Control Mod1 Print :exec {takeshot --area}
+
+## Applications ##
+Mod4 Return :exec {~/.fluxbox/bin/fluxterm.sh}
+Mod4 t :exec {~/.fluxbox/bin/fluxterm.sh -s}
+Mod4 f :exec {thunar}
+Mod4 e :exec {geany}
+Mod4 w :exec {firefox}
+Mod4 p :exec {color-gpick}
+
+## Rofi
+Mod1 F1 :exec {~/.fluxbox/rofi/bin/launcher}
+Mod4 r :exec {~/.fluxbox/rofi/bin/runner}
+Mod4 n :exec {~/.fluxbox/rofi/bin/network_menu}
+Mod4 m :exec {~/.fluxbox/rofi/bin/mpd}
+Mod4 x :exec {~/.fluxbox/rofi/bin/powermenu}
+Mod4 s :exec {~/.fluxbox/rofi/bin/systemstatus}
+
+## Other ##
+Control Mod1 l :exec {betterlockscreen --lock}
+Mod4 Escape :exec {xkill}
+
+## Fluxbox ##
+Control Mod1 Delete :exit
+Control Mod1 BackSpace :restart
+Control Mod1 r :reconfig
+
+## Current Window ##
+Mod4 c :Close
+Mod4 q :Close
+Mod4 d :showdesktop
+
+Mod1 F4 :Close
+Mod1 F5 :Minimize
+Mod1 F6 :Maximize
+Mod1 F7 :toggledecor
+Mod1 F11 :Fullscreen
+
+## Menus ##
+Mod4 space :RootMenu
+Mod1 space :WindowMenu
+
+## Tabbing ##
+
+# alt-tab
+Mod1 Tab :NextWindow {groups} (workspace=[current])
+Mod1 Shift Tab :PrevWindow {groups} (workspace=[current])
+
+# cycle through tabs in the current window
+Mod4 Tab :NextTab
+Mod4 Shift Tab :PrevTab
+
+# go to a specific tab in the current window
+Control 1 :Tab 1
+Control 2 :Tab 2
+Control 3 :Tab 3
+Control 4 :Tab 4
+Control 5 :Tab 5
+Control 6 :Tab 6
+Control 7 :Tab 7
+Control 8 :Tab 8
+Control 9 :Tab 9
+
+# Remove the current tab from the tab group, placing it in its own window.
+Mod4 Shift d :DetachClient
+
+## Moving and Resizing ##
+Control Mod1 Left :MoveLeft 20
+Control Mod1 Right :MoveRight 20
+Control Mod1 Up :MoveUp 20
+Control Mod1 Down :MoveDown 20
+
+Control Mod4 Left :Resize -20 0
+Control Mod4 Right :Resize 20 0
+Control Mod4 Up :Resize 0 -20
+Control Mod4 Down :Resize 0 20
+
+## Snapping
+Mod4 Left :MacroCmd {ResizeTo 50% 100%} {MoveTo 0 0 Left}
+Mod4 Right :MacroCmd {ResizeTo 50% 100%} {MoveTo 0 0 Right}
+Mod4 Up :MaximizeWindow
+Mod4 Down :MacroCmd {ResizeTo 60% 80%} {MoveTo 0 0 Center}
+
+## Windows Arrangement ##
+Mod4 h :arrangewindowshorizontal
+Mod4 v :arrangewindowsvertical
+Shift Mod4 h :arrangewindowsstackright
+Shift Mod4 l :arrangewindowsstackleft
+Shift Mod4 j :arrangewindowsstackbottom
+Shift Mod4 k :arrangewindowsstacktop

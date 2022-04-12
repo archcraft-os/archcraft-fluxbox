@@ -1,0 +1,145 @@
+/* Copyright (C) 2020-2022 Aditya Shakya <adi1090x@gmail.com> */
+/* Everyone is permitted to copy and distribute copies of this file under GNU-GPL3 */
+
+configuration {
+    location: 						5;
+    font:                           "JetBrains Mono Medium 10";
+    show-icons:                     false;
+    display-drun: 					"";
+    drun-display-format:            "{icon} {name}";
+    disable-history:                false;
+	click-to-exit: 					true;
+}
+
+@import "colors.rasi"
+
+window {
+    transparency:                   "real";
+    background-color:               @background;
+    text-color:                     @foreground;
+    border:                  		0px;
+    border-color:                  	@selected;
+    border-radius:                  0px;
+    width:                          525px;
+    x-offset:                       -10;
+    y-offset:                       -52;
+}
+
+prompt {
+    enabled: 						true;
+	background-color: 				inherit;
+	text-color: 					inherit;
+    border:                  		0px 0px 0px 0px;
+    border-color:                  	@selected;
+    border-radius:                  0px;
+}
+
+textbox-prompt-colon {
+	expand: 						false;
+	str: 							"";
+    border-radius: 					0;
+    background-color:             	inherit;
+    text-color: 					inherit;
+	font:							"Iosevka Nerd Font 10";
+}
+
+entry {
+    background-color:               inherit;
+    text-color:                     inherit;
+    placeholder-color:              inherit;
+    placeholder:                    "";
+    expand:                         true;
+    horizontal-align:               0;
+    blink:                          false;
+}
+
+inputbar {
+	children: 						[ prompt ];
+    background-color:             	@background-d;
+    spacing:    					12px;
+    padding:                        12px;
+    text-color:                     @foreground;
+    border:                  		0px;
+    border-radius:                  0;
+    border-color:                  	@selected;
+    expand:                         false;
+}
+
+case-indicator {
+    background-color:               @background;
+    text-color:                     @foreground;
+    spacing:                        0;
+}
+
+
+listview {
+    background-color:               @background;
+    columns:                        1;
+    lines:							10;
+    spacing:                        0px;
+    cycle:                          true;
+    dynamic:                        true;
+    layout:                         vertical;
+}
+
+mainbox {
+    background-color:               @background;
+    children:                       [ inputbar, listview ];
+    spacing:                       	0px;
+    padding:                        0px;
+}
+
+element {
+    background-color:               @background;
+    text-color:                     @foreground;
+    orientation:                    horizontal;
+    border-radius:                  0px;
+    padding:                        12px;
+}
+
+element-icon {
+    background-color: 				inherit;
+    text-color:       				inherit;
+    horizontal-align:               0.5;
+    vertical-align:                 0.5;
+    size:                           0px;
+    border:                         0px;
+}
+
+element-text {
+    background-color: 				inherit;
+    text-color:       				inherit;
+    expand:                         true;
+    horizontal-align:               0;
+    vertical-align:                 0.5;
+}
+
+element selected {
+    background-color:               @background;
+    text-color:                     @foreground;
+    border:                  		0px;
+    border-radius:                  0;
+    border-color:                  	@selected;
+}
+
+element.active,
+element.selected.urgent {
+  background-color: @on;
+  text-color: @background;
+  border-color: @on;
+}
+
+element.selected.urgent {
+  border-color: @selected;
+}
+
+element.urgent,
+element.selected.active {
+  background-color: @off;
+  text-color: @background;
+  border-color: @off;
+}
+
+element.selected.active {
+  border-color: @selected;
+}

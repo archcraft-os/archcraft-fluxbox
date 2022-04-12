@@ -1,0 +1,150 @@
+/* Copyright (C) 2020-2022 Aditya Shakya <adi1090x@gmail.com> */
+/* Everyone is permitted to copy and distribute copies of this file under GNU-GPL3 */
+
+configuration {
+    location:                       6;
+    font:                           "JetBrains Mono Medium 10";
+    show-icons:                     false;
+    display-drun: 					"";
+    drun-display-format:            "{icon} {name}";
+    disable-history:                false;
+	click-to-exit: 					true;
+}
+
+@import "colors.rasi"
+
+window {
+    transparency:                   "real";
+    background-color:               @background;
+    text-color:                     @foreground;
+    border:                  		0px;
+    border-color:                  	@selected;
+    border-radius:                  0px;
+    width:                          450px;
+    x-offset:                       0;
+    y-offset:                       -52;
+}
+
+prompt {
+    enabled: 						true;
+	background-color: 				inherit;
+	text-color: 					inherit;
+    border:                  		0px 0px 0px 0px;
+    border-color:                  	@selected;
+    border-radius:                  0px;
+}
+
+textbox-prompt-colon {
+	expand: 						false;
+	str: 							"ﱘ";
+    border-radius:                  0px;
+    background-color:               inherit;
+    text-color:                     inherit;
+	font:							"Iosevka Nerd Font 10";
+}
+
+entry {
+    background-color:               inherit;
+    text-color:                     inherit;
+    placeholder-color:              inherit;
+    placeholder:                    "";
+    expand:                         true;
+    horizontal-align:               0;
+    blink:                          false;
+}
+
+inputbar {
+	children: 						[ textbox-prompt-colon, prompt ];
+    spacing:                        10;
+    padding:                        10px;
+    background-color:               @background-d;
+    text-color:                     @foreground;
+    border:                  		0px;
+    border-radius:                  0px;
+    border-color:                  	@selected;
+    expand:                         false;
+    position:                       center;
+}
+
+case-indicator {
+    background-color:               @background;
+    text-color:                     @foreground;
+    spacing:                        0;
+}
+
+
+listview {
+    background-color:               @background;
+    columns:                        6;
+    lines:							1;
+    spacing:                        5px;
+    cycle:                          true;
+    dynamic:                        true;
+    layout:                         vertical;
+}
+
+mainbox {
+    background-color:               @background;
+    children:                       [ inputbar, listview ];
+    spacing:                       	5px;
+    padding:                        5px;
+}
+
+element {
+    background-color:               @background-l;
+    text-color:                     @foreground;
+    orientation:                    horizontal;
+    border-radius:                  0;
+    padding:                        18px;
+}
+
+element-icon {
+    background-color: 				inherit;
+    text-color:       				inherit;
+    horizontal-align:               0.5;
+    vertical-align:                 0.5;
+    size:                           0px;
+    border:                         0px;
+}
+
+element-text {
+    background-color: 				inherit;
+    text-color:       				inherit;
+	font:							"feather 18";
+    expand:                         true;
+    horizontal-align:               0.5;
+    vertical-align:                 0.5;
+    margin:                         0px;
+}
+
+element selected {
+    background-color:               @background-d;
+    text-color:                     @foreground;
+    border:                  		0px;
+    border-radius:                  0;
+    border-color:                  	@selected;
+}
+
+element.active,
+element.selected.urgent {
+  background-color: @on;
+  text-color: @background;
+  border-color: @on;
+  border-radius: 0;
+}
+
+element.selected.urgent {
+  border-color: @selected;
+}
+
+element.urgent,
+element.selected.active {
+  background-color: @off;
+  text-color: @background;
+  border-color: @off;
+  border-radius: 0;
+}
+
+element.selected.active {
+  border-color: @selected;
+}

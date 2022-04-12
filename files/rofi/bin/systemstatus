@@ -1,0 +1,92 @@
+#!/usr/bin/env bash
+
+## Copyright (C) 2020-2022 Aditya Shakya <adi1090x@gmail.com>
+## Everyone is permitted to copy and distribute copies of this file under GNU-GPL3
+
+## Information
+
+##-- OS ------------------------
+os=`uname -o`
+
+##-- DISTRO ------------------------
+distro=`cat /etc/os-release | grep NAME= | head -n1 | cut -d'=' -f2 | tr -d \"`
+
+##-- KERNEL ------------------------
+kernel=`uname -sr`
+
+##-- MACHINE ------------------------
+machine=`uname -m`
+
+##-- CPU ------------------------
+cpu=`cat /proc/cpuinfo | grep 'model name' | cut -d':' -f2 | uniq`
+
+##-- MEMORY ------------------------
+m_total="`free -m | grep 'Mem' | tr -s '[:blank:]' | cut -d' ' -f2`MB"
+m_used="`free -m | grep 'Mem' | tr -s '[:blank:]' | cut -d' ' -f3`MB"
+m_free="`free -m | grep 'Mem' | tr -s '[:blank:]' | cut -d' ' -f4`MB"
+
+##-- SWAP ------------------------
+s_total="`free -m | grep 'Swap' | tr -s '[:blank:]' | cut -d' ' -f2`MB"
+s_used="`free -m | grep 'Swap' | tr -s '[:blank:]' | cut -d' ' -f3`MB"
+s_free="`free -m | grep 'Swap' | tr -s '[:blank:]' | cut -d' ' -f4`MB"
+swappiness="`cat /proc/sys/vm/swappiness`%"
+
+##-- INIT ------------------------
+init=`cat /proc/1/comm`
+
+##-- BATTERY ------------------------
+b_stat=`acpi -b | grep Battery | cut -d' ' -f3 | tr -d ,`
+b_perc=`acpi -b | grep Battery | cut -d' ' -f4 | tr -d ,`
+b_cap=`acpi -i | tail -n1 | cut -d'=' -f2 | tr -d "[:blank:]"`
+
+##-- BACKLIGHT ------------------------
+g_card=`ls /sys/class/backlight | head -n1`
+b_value=`cat /sys/class/backlight/$g_card/brightness`
+backlight="$(($b_value*100/255))%"
+
+##-- VOLUME ------------------------
+volume=`amixer get Master | tail -n1 | awk -F ' ' '{print $5}' | tr -d '[]'`
+vstatus=`amixer get Master | tail -n1 | grep -wo 'on'`
+if [[ "$vstatus" == "on" ]]; then
+	VOL=" VOLUME    : $volume ∙ Unmute"
+else
+	VOL=" VOLUME    : $volume ∙ Mute"
+fi
+
+##-- UPTIME ------------------------
+uptime=`uptime -p | awk '{print $2 " " $3 " " $4 " " $5}'`
+
+##-- LOAD ------------------------
+load=`cat /proc/loadavg`
+
+##-- WIFI ------------------------
+interface=`nmcli device status | grep "wifi" | tr -s '[:blank:]' | cut -d' ' -f1`
+type=`nmcli device status | grep "wifi" | tr -s '[:blank:]' | cut -d' ' -f2`
+status=`nmcli device status | grep "wifi" | tr -s '[:blank:]' | cut -d' ' -f3`
+ssid=`nmcli device status | grep "wifi" | tr -s '[:blank:]' | cut -d' ' -f4`
+
+##-- Entries ------------------------
+OS=" OS        : $distro ∙ $os ∙ $machine"
+KERN=" KERNEL    : $kernel"
+CPU=" CPU       :$cpu"
+MEM=" MEMORY    : $m_used ∙ $m_free ∙ $m_total"
+SWAP=" SWAP      : $s_used ∙ $s_free ∙ $s_total ∙ $swappiness"
+BAT=" BATTERY   : $b_perc ∙ $b_stat ∙ Capacity, $b_cap"
+LIGHT=" BACKLIGHT : $backlight"
+WIFI=" WIFI      : $interface ∙ $status ∙ $ssid"
+LOAD=" LOAD      : $load"
+
+# Rofi
+DIR="$HOME/.fluxbox"
+rofi_command="rofi -theme $DIR/rofi/themes/status.rasi"
+
+# Variable passed to rofi
+options="$OS\n$KERN\n$CPU\n$MEM\n$SWAP\n$BAT\n$LIGHT\n$VOL\n$WIFI\n$LOAD"
+
+chosen="$(echo -e "$options" | $rofi_command -p " $USER@$HOSTNAME |  `date +'%I:%M %p, %b %d %G'`" -dmenu -selected-row 0)"
+case $chosen in
+    *)
+		echo
+        ;;
+esac
+
