@@ -80,6 +80,7 @@ XF86MonBrightnessDown :exec {brightness --dec}
 XF86AudioRaiseVolume :exec {volume --inc}
 XF86AudioLowerVolume :exec {volume --dec}
 XF86AudioMute :exec {volume --toggle}
+XF86AudioMicMute :exec {volume --toggle-mic}
 
 XF86AudioStop :exec {mpc stop}
 XF86AudioPlay :exec {mpc toggle}
@@ -94,7 +95,7 @@ Control Mod1 Print :exec {takeshot --area}
 
 ## Applications ##
 Mod4 Return :exec {~/.fluxbox/bin/fluxterm.sh}
-Mod4 t :exec {~/.fluxbox/bin/fluxterm.sh -s}
+Mod4 t :exec {~/.fluxbox/bin/fluxterm.sh --full}
 Mod4 f :exec {thunar}
 Mod4 e :exec {geany}
 Mod4 w :exec {firefox}

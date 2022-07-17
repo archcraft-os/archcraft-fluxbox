@@ -5,29 +5,33 @@
 
 ## Rofi #############################################
 DIR="$HOME/.fluxbox/rofi/themes"
-MSG="Options  -  yes / y / no / n"
 
-cdialog () {
-rofi -dmenu\
-    -i\
-    -no-fixed-num-lines\
-    -p "Are You Sure? : "\
-    -theme "$DIR"/confirm.rasi
+# Get user confirmation 
+get_confirmation() {
+	rofi -dmenu -i \
+		 -no-fixed-num-lines \
+		 -p "Are You Sure? : " \
+		 -theme "$DIR"/confirm.rasi
+}
+
+# Show message
+show_msg() {
+	rofi -theme "$DIR"/askpass.rasi -e "Options  -  yes / y / no / n"
 }
 
 ## Options #############################################
 if  [[ $1 = "--logout" ]]; then
-	ans=$(cdialog &)
+	ans=$(get_confirmation &)
 	if [[ $ans == "yes" ]] || [[ $ans == "YES" ]] || [[ $ans == "y" ]]; then
         killall fluxbox
 	elif [[ $ans == "no" ]] || [[ $ans == "NO" ]] || [[ $ans == "n" ]]; then
         exit
     else
-        rofi -theme "$DIR"/askpass.rasi -e "$MSG"
+		show_msg
     fi
 
 elif  [[ $1 = "--suspend" ]]; then
-	ans=$(cdialog &)
+	ans=$(get_confirmation &)
 	if [[ $ans == "yes" ]] || [[ $ans == "YES" ]] || [[ $ans == "y" ]]; then
 		mpc -q pause
 		amixer set Master mute
@@ -35,27 +39,27 @@ elif  [[ $1 = "--suspend" ]]; then
 	elif [[ $ans == "no" ]] || [[ $ans == "NO" ]] || [[ $ans == "n" ]]; then
 		exit
     else
-		rofi -theme "$DIR"/askpass.rasi -e "$MSG"
+		show_msg
     fi
 
 elif  [[ $1 = "--reboot" ]]; then
-	ans=$(cdialog &)
+	ans=$(get_confirmation &)
 	if [[ $ans == "yes" ]] || [[ $ans == "YES" ]] || [[ $ans == "y" ]]; then
         systemctl reboot
 	elif [[ $ans == "no" ]] || [[ $ans == "NO" ]] || [[ $ans == "n" ]]; then
         exit
     else
-        rofi -theme "$DIR"/askpass.rasi -e "$MSG"
+		show_msg
     fi
 
 elif  [[ $1 = "--shutdown" ]]; then
-	ans=$(cdialog &)
+	ans=$(get_confirmation &)
 	if [[ $ans == "yes" ]] || [[ $ans == "YES" ]] || [[ $ans == "y" ]]; then
         systemctl poweroff
 	elif [[ $ans == "no" ]] || [[ $ans == "NO" ]] || [[ $ans == "n" ]]; then
         exit
     else
-        rofi -theme "$DIR"/askpass.rasi -e "$MSG"
+		show_msg
     fi
 
 ## Help Menu #############################################

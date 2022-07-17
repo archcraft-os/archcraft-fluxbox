@@ -2,7 +2,7 @@
 
 pkgname=archcraft-fluxbox
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Fluxbox Configurations for Archcraft"
 url="https://github.com/archcraft-os/archcraft-fluxbox"
 arch=('any')
@@ -15,8 +15,6 @@ depends=('fluxbox'
 		'maim' 'xclip' 'viewnior'
 		'ksuperkey' 
 		'betterlockscreen'
-		'picom-ibhagwan-git' 
-		'xfce-polkit' 
 		'xfce4-power-manager' 
 		'hsetroot'
 		'acpi'
