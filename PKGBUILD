@@ -1,8 +1,8 @@
 # Maintainer: Aditya Shakya <adi1090x@gmail.com>
 
 pkgname=archcraft-fluxbox
-pkgver=1.0
-pkgrel=2
+pkgver=2.0
+pkgrel=0
 pkgdesc="Fluxbox Configurations for Archcraft"
 url="https://github.com/archcraft-os/archcraft-fluxbox"
 arch=('any')
@@ -18,7 +18,10 @@ depends=('fluxbox'
 		'xfce4-power-manager' 
 		'hsetroot'
 		'acpi'
-		'networkmanager')
+		'networkmanager'
+		'wmname'
+		'pulsemixer' 'light' 'xcolor'
+)
 conflicts=()
 provides=("${pkgname}")
 options=(!strip !emptydirs)

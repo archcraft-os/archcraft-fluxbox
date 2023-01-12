@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-## Copyright (C) 2020-2022 Aditya Shakya <adi1090x@gmail.com>
-## Everyone is permitted to copy and distribute copies of this file under GNU-GPL3
+## Copyright (C) 2020-2023 Aditya Shakya <adi1090x@gmail.com>
 
 ## Information
 
@@ -45,12 +44,12 @@ b_value=`cat /sys/class/backlight/$g_card/brightness`
 backlight="$(($b_value*100/255))%"
 
 ##-- VOLUME ------------------------
-volume=`amixer get Master | tail -n1 | awk -F ' ' '{print $5}' | tr -d '[]'`
-vstatus=`amixer get Master | tail -n1 | grep -wo 'on'`
-if [[ "$vstatus" == "on" ]]; then
-	VOL=" VOLUME    : $volume ∙ Unmute"
+volume=`pulsemixer --get-volume | cut -d' ' -f1`
+vstatus=`pulsemixer --get-mute`
+if [[ "$vstatus" == '0' ]]; then
+	VOL=" VOLUME    : ${volume}% ∙ Unmute"
 else
-	VOL=" VOLUME    : $volume ∙ Mute"
+	VOL=" VOLUME    : ${volume}% ∙ Mute"
 fi
 
 ##-- UPTIME ------------------------
@@ -89,4 +88,3 @@ case $chosen in
 		echo
         ;;
 esac
-

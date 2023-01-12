@@ -74,24 +74,24 @@ Shift Mod4 Left :TakeToPrevWorkspace
 Shift Mod4 Right :TakeToNextWorkspace
 
 ## System Keys ##
-XF86MonBrightnessUp :exec {brightness --inc}
-XF86MonBrightnessDown :exec {brightness --dec}
+XF86MonBrightnessUp :exec {~/.fluxbox/bin/fluxbrightness.sh --inc}
+XF86MonBrightnessDown :exec {~/.fluxbox/bin/fluxbrightness.sh --dec}
 
-XF86AudioRaiseVolume :exec {volume --inc}
-XF86AudioLowerVolume :exec {volume --dec}
-XF86AudioMute :exec {volume --toggle}
-XF86AudioMicMute :exec {volume --toggle-mic}
+XF86AudioRaiseVolume :exec {~/.fluxbox/bin/fluxvolume.sh --inc}
+XF86AudioLowerVolume :exec {~/.fluxbox/bin/fluxvolume.sh --dec}
+XF86AudioMute :exec {~/.fluxbox/bin/fluxvolume.sh --toggle}
+XF86AudioMicMute :exec {~/.fluxbox/bin/fluxvolume.sh --toggle-mic}
 
 XF86AudioStop :exec {mpc stop}
 XF86AudioPlay :exec {mpc toggle}
 XF86AudioPrev :exec {mpc prev}
 XF86AudioNext :exec {mpc next}
 
-Print :exec {takeshot --now}
-Mod1 Print :exec {takeshot --in5}
-Shift Print :exec {takeshot --in10}
-Control Print :exec {takeshot --win}
-Control Mod1 Print :exec {takeshot --area}
+Print :exec {~/.fluxbox/bin/fluxscreenshot.sh --now}
+Mod1 Print :exec {~/.fluxbox/bin/fluxscreenshot.sh --in5}
+Shift Print :exec {~/.fluxbox/bin/fluxscreenshot.sh --in10}
+Control Print :exec {~/.fluxbox/bin/fluxscreenshot.sh --win}
+Mod4 Print :exec {~/.fluxbox/bin/fluxscreenshot.sh --area}
 
 ## Applications ##
 Mod4 Return :exec {~/.fluxbox/bin/fluxterm.sh}
@@ -99,7 +99,7 @@ Mod4 t :exec {~/.fluxbox/bin/fluxterm.sh --full}
 Mod4 f :exec {thunar}
 Mod4 e :exec {geany}
 Mod4 w :exec {firefox}
-Mod4 p :exec {color-gpick}
+Mod4 p :exec {~/.fluxbox/bin/fluxcolorpicker.sh}
 
 ## Rofi
 Mod1 F1 :exec {~/.fluxbox/rofi/bin/launcher}

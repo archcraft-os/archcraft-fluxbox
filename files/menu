@@ -14,11 +14,11 @@
 	[exec] (Vim) {~/.fluxbox/bin/asroot.sh 'alacritty -e vim'}
 [end]
 [submenu] (Screenshot)
-	[exec] (Screenshot Now) {takeshot --now}
-	[exec] (Screenshot In 5s) {takeshot --in5}
-	[exec] (Screenshot In 10s) {takeshot --in10}
-	[exec] (Screenshot Area) {takeshot --area}
-	[exec] (Screenshot Window) {takeshot --win}
+	[exec] (Screenshot Now) {~/.fluxbox/bin/fluxscreenshot.sh --now}
+	[exec] (Screenshot In 5s) {~/.fluxbox/bin/fluxscreenshot.sh --in5}
+	[exec] (Screenshot In 10s) {~/.fluxbox/bin/fluxscreenshot.sh --in10}
+	[exec] (Screenshot Area) {~/.fluxbox/bin/fluxscreenshot.sh --area}
+	[exec] (Screenshot Window) {~/.fluxbox/bin/fluxscreenshot.sh --win}
 [end]
 [separator]
 [submenu] (Fluxbox)
