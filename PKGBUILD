@@ -2,7 +2,7 @@
 
 pkgname=archcraft-fluxbox
 pkgver=2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Fluxbox Configurations for Archcraft"
 url="https://github.com/archcraft-os/archcraft-fluxbox"
 arch=('any')
@@ -45,15 +45,15 @@ package() {
 	chmod +x "$_config"/bin/*
 	chmod +x "$_config"/rofi/bin/*
 
-	install -Dm 644 apps   			"$_config"/apps
-	install -Dm 644 init   			"$_config"/init
-	install -Dm 644 keys   			"$_config"/keys
-	install -Dm 644 menu   			"$_config"/menu
-	install -Dm 644 windowmenu   	"$_config"/windowmenu
-	install -Dm 644 dunstrc   		"$_config"/dunstrc
-	install -Dm 644 picom.conf   	"$_config"/picom.conf
+	install -Dm 644 apps   					"$_config"/apps
+	install -Dm 644 init   					"$_config"/init
+	install -Dm 644 keys   					"$_config"/keys
+	install -Dm 644 menu   					"$_config"/menu
+	install -Dm 644 windowmenu   			"$_config"/windowmenu
+	install -Dm 644 dunstrc   				"$_config"/dunstrc
+	install -Dm 644 picom.conf   			"$_config"/picom.conf
 	install -Dm 644 picom-ibhagwan.conf   	"$_config"/picom-ibhagwan.conf
 	install -Dm 644 picom-jonaburg.conf   	"$_config"/picom-jonaburg.conf
 	install -Dm 644 picom-original.conf   	"$_config"/picom-original.conf
-	install -Dm 755 startup   		"$_config"/startup
+	install -Dm 755 startup   				"$_config"/startup
 }
