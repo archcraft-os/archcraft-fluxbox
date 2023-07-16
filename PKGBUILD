@@ -1,8 +1,8 @@
 # Maintainer: Aditya Shakya <adi1090x@gmail.com>
 
 pkgname=archcraft-fluxbox
-pkgver=2.0
-pkgrel=3
+pkgver=3.0
+pkgrel=0
 pkgdesc="Fluxbox Configurations for Archcraft"
 url="https://github.com/archcraft-os/archcraft-fluxbox"
 arch=('any')
@@ -16,6 +16,7 @@ depends=('fluxbox'
 		'ksuperkey' 
 		'betterlockscreen'
 		'xfce4-power-manager' 
+		'xsettingsd'
 		'hsetroot'
 		'acpi'
 		'networkmanager'
@@ -35,15 +36,17 @@ package() {
 	local _config=${pkgdir}/etc/skel/.fluxbox
 	mkdir -p "$_config"
 
-	# Copy i3wm config files
+	# Copy fluxbox config files
 	cp -r ${srcdir}/alacritty 		"$_config"
 	cp -r ${srcdir}/backgrounds 	"$_config"
-	cp -r ${srcdir}/bin 			"$_config"
-	cp -r ${srcdir}/rofi 			"$_config"
+	cp -r ${srcdir}/scripts 		"$_config"
 	cp -r ${srcdir}/styles 			"$_config"
+	cp -r ${srcdir}/theme 			"$_config"
 
-	chmod +x "$_config"/bin/*
-	chmod +x "$_config"/rofi/bin/*
+	chmod +x "$_config"/scripts/*
+	chmod +x "$_config"/theme/polybar.sh
+	chmod +x "$_config"/theme/polybar/launch.sh
+	chmod +x "$_config"/theme/polybar/scripts/bluetooth.sh
 
 	install -Dm 644 apps   					"$_config"/apps
 	install -Dm 644 init   					"$_config"/init
@@ -56,4 +59,5 @@ package() {
 	install -Dm 644 picom-jonaburg.conf   	"$_config"/picom-jonaburg.conf
 	install -Dm 644 picom-original.conf   	"$_config"/picom-original.conf
 	install -Dm 755 startup   				"$_config"/startup
+	install -Dm 644 xsettingsd   			"$_config"/xsettingsd
 }

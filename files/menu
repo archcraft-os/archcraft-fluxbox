@@ -1,24 +1,24 @@
 [begin] (Main Menu)
 [encoding] {UTF-8}
-[exec] (Terminal Emulator) {~/.fluxbox/bin/fluxterm.sh}
+[exec] (Terminal Emulator) {~/.fluxbox/scripts/fbox_term}
 [exec] (Web Browser) {firefox}
 [exec] (File Manager) {thunar}
 [exec] (Text Editor) {geany}
 [separator]
 [submenu] (Apps As Root)
-	[exec] (Alacritty) {~/.fluxbox/bin/asroot.sh alacritty}
-	[exec] (Thunar) {~/.fluxbox/bin/asroot.sh 'dbus-run-session thunar'}
-	[exec] (Geany) {~/.fluxbox/bin/asroot.sh geany}
+	[exec] (Alacritty) {~/.fluxbox/scripts/fbox_asroot alacritty}
+	[exec] (Thunar) {~/.fluxbox/scripts/fbox_asroot 'dbus-run-session thunar'}
+	[exec] (Geany) {~/.fluxbox/scripts/fbox_asroot geany}
 	[separator]
-	[exec] (Ranger) {~/.fluxbox/bin/asroot.sh 'alacritty -e ranger'}
-	[exec] (Vim) {~/.fluxbox/bin/asroot.sh 'alacritty -e vim'}
+	[exec] (Ranger) {~/.fluxbox/scripts/fbox_asroot 'alacritty -e ranger'}
+	[exec] (Vim) {~/.fluxbox/scripts/fbox_asroot 'alacritty -e vim'}
 [end]
 [submenu] (Screenshot)
-	[exec] (Screenshot Now) {~/.fluxbox/bin/fluxscreenshot.sh --now}
-	[exec] (Screenshot In 5s) {~/.fluxbox/bin/fluxscreenshot.sh --in5}
-	[exec] (Screenshot In 10s) {~/.fluxbox/bin/fluxscreenshot.sh --in10}
-	[exec] (Screenshot Area) {~/.fluxbox/bin/fluxscreenshot.sh --area}
-	[exec] (Screenshot Window) {~/.fluxbox/bin/fluxscreenshot.sh --win}
+	[exec] (Screenshot Now) {~/.fluxbox/scripts/fbox_screenshot --now}
+	[exec] (Screenshot In 5s) {~/.fluxbox/scripts/fbox_screenshot --in5}
+	[exec] (Screenshot In 10s) {~/.fluxbox/scripts/fbox_screenshot --in10}
+	[exec] (Screenshot Area) {~/.fluxbox/scripts/fbox_screenshot --area}
+	[exec] (Screenshot Window) {~/.fluxbox/scripts/fbox_screenshot --win}
 [end]
 [separator]
 [submenu] (Fluxbox)
@@ -37,10 +37,10 @@
 [end]
 [submenu] (System)
 	[exec] (Lock) {betterlockscreen --lock}
-	[exec] (Logout) {~/.fluxbox/bin/fluxpower.sh --logout}
-	[exec] (Suspend) {~/.fluxbox/bin/fluxpower.sh --suspend}
-	[exec] (Reboot) {~/.fluxbox/bin/fluxpower.sh --reboot}
-	[exec] (Shutdown) {~/.fluxbox/bin/fluxpower.sh --shutdown}
+	[exec] (Logout) {~/.fluxbox/scripts/fbox_power --logout}
+	[exec] (Suspend) {~/.fluxbox/scripts/fbox_power --suspend}
+	[exec] (Reboot) {~/.fluxbox/scripts/fbox_power --reboot}
+	[exec] (Shutdown) {~/.fluxbox/scripts/fbox_power --shutdown}
 [end]
 [endencoding]
 [end]

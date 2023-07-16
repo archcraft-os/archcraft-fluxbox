@@ -74,43 +74,46 @@ Shift Mod4 Left :TakeToPrevWorkspace
 Shift Mod4 Right :TakeToNextWorkspace
 
 ## System Keys ##
-XF86MonBrightnessUp :exec {~/.fluxbox/bin/fluxbrightness.sh --inc}
-XF86MonBrightnessDown :exec {~/.fluxbox/bin/fluxbrightness.sh --dec}
+XF86MonBrightnessUp :exec {~/.fluxbox/scripts/fbox_brightness --inc}
+XF86MonBrightnessDown :exec {~/.fluxbox/scripts/fbox_brightness --dec}
 
-XF86AudioRaiseVolume :exec {~/.fluxbox/bin/fluxvolume.sh --inc}
-XF86AudioLowerVolume :exec {~/.fluxbox/bin/fluxvolume.sh --dec}
-XF86AudioMute :exec {~/.fluxbox/bin/fluxvolume.sh --toggle}
-XF86AudioMicMute :exec {~/.fluxbox/bin/fluxvolume.sh --toggle-mic}
+XF86AudioRaiseVolume :exec {~/.fluxbox/scripts/fbox_volume --inc}
+XF86AudioLowerVolume :exec {~/.fluxbox/scripts/fbox_volume --dec}
+XF86AudioMute :exec {~/.fluxbox/scripts/fbox_volume --toggle}
+XF86AudioMicMute :exec {~/.fluxbox/scripts/fbox_volume --toggle-mic}
 
 XF86AudioStop :exec {mpc stop}
 XF86AudioPlay :exec {mpc toggle}
 XF86AudioPrev :exec {mpc prev}
 XF86AudioNext :exec {mpc next}
 
-Print :exec {~/.fluxbox/bin/fluxscreenshot.sh --now}
-Mod1 Print :exec {~/.fluxbox/bin/fluxscreenshot.sh --in5}
-Shift Print :exec {~/.fluxbox/bin/fluxscreenshot.sh --in10}
-Control Print :exec {~/.fluxbox/bin/fluxscreenshot.sh --win}
-Mod4 Print :exec {~/.fluxbox/bin/fluxscreenshot.sh --area}
+Print :exec {~/.fluxbox/scripts/fbox_screenshot --now}
+Mod1 Print :exec {~/.fluxbox/scripts/fbox_screenshot --in5}
+Shift Print :exec {~/.fluxbox/scripts/fbox_screenshot --in10}
+Control Print :exec {~/.fluxbox/scripts/fbox_screenshot --win}
+Mod4 Print :exec {~/.fluxbox/scripts/fbox_screenshot --area}
 
 ## Applications ##
-Mod4 Return :exec {~/.fluxbox/bin/fluxterm.sh}
-Mod4 t :exec {~/.fluxbox/bin/fluxterm.sh --full}
+Mod4 Return :exec {~/.fluxbox/scripts/fbox_term}
+Mod4 t :exec {~/.fluxbox/scripts/fbox_term --full}
 Mod4 f :exec {thunar}
 Mod4 e :exec {geany}
 Mod4 w :exec {firefox}
-Mod4 p :exec {~/.fluxbox/bin/fluxcolorpicker.sh}
+Mod4 p :exec {~/.fluxbox/scripts/fbox_colorpicker}
 
 ## Rofi
-Mod1 F1 :exec {~/.fluxbox/rofi/bin/launcher}
-Mod4 r :exec {~/.fluxbox/rofi/bin/runner}
-Mod4 n :exec {~/.fluxbox/rofi/bin/network_menu}
-Mod4 m :exec {~/.fluxbox/rofi/bin/mpd}
-Mod4 x :exec {~/.fluxbox/rofi/bin/powermenu}
-Mod4 s :exec {~/.fluxbox/rofi/bin/systemstatus}
+Mod1 F1 :exec {~/.fluxbox/scripts/rofi_launcher}
+Mod1 F2 :exec {~/.fluxbox/scripts/rofi_runner}
+Mod4 r :exec {~/.fluxbox/scripts/rofi_runner}
+Mod4 b :exec {~/.fluxbox/scripts/rofi_bluetooth}
+Mod4 n :exec {~/.fluxbox/scripts/network_menu}
+Mod4 m :exec {~/.fluxbox/scripts/rofi_music}
+Mod4 x :exec {~/.fluxbox/scripts/rofi_powermenu}
+Mod4 s :exec {~/.fluxbox/scripts/rofi_status}
 
 ## Other ##
 Control Mod1 l :exec {betterlockscreen --lock}
+Control Mod1 m :exec {~/.fluxbox/scripts/fbox_music}
 Mod4 Escape :exec {xkill}
 
 ## Fluxbox ##
