@@ -1,2 +1,2 @@
 # archcraft-fluxbox
- // Configuration : fluxbox
+ // Configuration : Fluxbox

@@ -34,7 +34,7 @@ ksuperkey -e 'Super_R=Alt_L|F1' &
 xsetroot -cursor_name left_ptr
 
 # Restore wallpaper
-hsetroot -root -cover "$fdir"/backgrounds/default.jpg
+hsetroot -cover "$fdir"/backgrounds/default.jpg
 
 # Lauch notification daemon
 "$fdir"/scripts/fbox_dunst
