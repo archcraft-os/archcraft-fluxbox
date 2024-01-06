@@ -1,8 +1,8 @@
 # Maintainer: Aditya Shakya <adi1090x@gmail.com>
 
 pkgname=archcraft-fluxbox
-pkgver=3.0
-pkgrel=1
+pkgver=4.0
+pkgrel=0
 pkgdesc="Fluxbox Configurations for Archcraft"
 arch=('any')
 url="https://github.com/archcraft-os/archcraft-fluxbox"
