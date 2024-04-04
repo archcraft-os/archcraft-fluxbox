@@ -6,12 +6,12 @@
 [exec] (Text Editor) {geany}
 [separator]
 [submenu] (Apps As Root)
-	[exec] (Alacritty) {~/.fluxbox/scripts/fbox_asroot alacritty}
+	[exec] (Alacritty) {~/.fluxbox/scripts/fbox_asroot 'alacritty --config-file /root/.fluxbox/alacritty/alacritty.toml'}
 	[exec] (Thunar) {~/.fluxbox/scripts/fbox_asroot 'dbus-run-session thunar'}
 	[exec] (Geany) {~/.fluxbox/scripts/fbox_asroot geany}
 	[separator]
-	[exec] (Ranger) {~/.fluxbox/scripts/fbox_asroot 'alacritty -e ranger'}
-	[exec] (Vim) {~/.fluxbox/scripts/fbox_asroot 'alacritty -e vim'}
+	[exec] (Ranger) {~/.fluxbox/scripts/fbox_asroot 'alacritty --config-file /root/.fluxbox/alacritty/alacritty.toml -e ranger'}
+	[exec] (Vim) {~/.fluxbox/scripts/fbox_asroot 'alacritty --config-file /root/.fluxbox/alacritty/alacritty.toml -e vim'}
 [end]
 [submenu] (Screenshot)
 	[exec] (Screenshot Now) {~/.fluxbox/scripts/fbox_screenshot --now}
