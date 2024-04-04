@@ -2,7 +2,7 @@
 
 pkgname=archcraft-fluxbox
 pkgver=4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Fluxbox Configurations for Archcraft"
 arch=('any')
 url="https://github.com/archcraft-os/archcraft-fluxbox"
